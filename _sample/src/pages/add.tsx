@@ -11,7 +11,7 @@ const Add: NextPage = () => {
 
   return (
     <div>
-      <h3>TODO一覧</h3>
+      <h3>TODO追加</h3>
       <form onSubmit={handleSubmit}>
         <input type="text" name="text" autoComplete="off" required />
         <button>追加</button>
