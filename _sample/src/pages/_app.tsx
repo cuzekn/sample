@@ -13,7 +13,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Header />
+      <Header todoCount={todos.length} />
       <main>
         <Component {...pageProps} todos={todos} setTodos={setTodos} />
       </main>

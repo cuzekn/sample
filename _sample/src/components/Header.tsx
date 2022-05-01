@@ -1,7 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
 
-export const Header: FC = () => {
+type Props = {
+  todoCount: number;
+}
+
+export const Header: FC<Props> = ({todoCount}) => {
   return (
     <header>
       <nav>
@@ -18,7 +22,7 @@ export const Header: FC = () => {
         </Link>
       </nav>
 
-      <h2>TODO: 2件</h2>
+      <h2>TODO: {todoCount}件</h2>
     </header>
   );
 };
