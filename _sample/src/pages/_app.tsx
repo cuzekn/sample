@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { useState } from "react";
-import { Header } from "src/components/Header";
+import { Layout } from "src/components/Layout";
 import { Todo } from "src/types";
 
 const TODOS: Todo[] = [
@@ -12,11 +12,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [todos, setTodos] = useState<Todo[]>(TODOS);
 
   return (
-    <>
-      <Header todoCount={todos.length} />
-      <main>
+    <Layout todoCount={todos.length}>
         <Component {...pageProps} todos={todos} setTodos={setTodos} />
-      </main>
-    </>
+    </Layout>
   );
 }
