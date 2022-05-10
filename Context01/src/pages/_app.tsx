@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { useState } from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { Layout } from "src/components/Layout";
 import { Todo } from "src/types";
 
@@ -8,12 +8,24 @@ const TODOS: Todo[] = [
   { id: 2, text: "bar", isDone: true },
 ];
 
+export const TodoContext = createContext<{
+  todos: Todo[];
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
+}>({
+  todos: TODOS,
+  setTodos: () => {
+    throw new Error("setTodos is not implemented");
+  },
+});
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [todos, setTodos] = useState<Todo[]>(TODOS);
 
   return (
-    <Layout todoCount={todos.length}>
-        <Component {...pageProps} todos={todos} setTodos={setTodos} />
-    </Layout>
+    <TodoContext.Provider value={{ todos, setTodos }}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </TodoContext.Provider>
   );
 }
