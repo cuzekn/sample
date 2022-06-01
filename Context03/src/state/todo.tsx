@@ -1,10 +1,9 @@
 import {
   createContext,
-  Dispatch,
   FC,
   ReactNode,
-  SetStateAction,
   useCallback,
+  useContext,
   useMemo,
   useState,
 } from "react";
@@ -65,3 +64,11 @@ export const TodosProvider: FC<{ children: ReactNode }> = ({ children }) => {
     </TodosContext.Provider>
   );
 };
+
+export const useTodos = () => {
+  return useContext(TodosContext);
+};
+
+export const useTodosDispatch = () => {
+  return useContext(TodosDispatchContext);
+}

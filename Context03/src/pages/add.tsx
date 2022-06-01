@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import { ComponentProps, useContext } from "react";
-import { TodosContext, TodosDispatchContext } from "src/state/todo";
+import { ComponentProps } from "react";
+import { useTodosDispatch } from "src/state/todo";
 
 const Add: NextPage = () => {
-  const { addTodo } = useContext(TodosDispatchContext);
+  const { addTodo } = useTodosDispatch();
 
   const handleSubmit: ComponentProps<"form">["onSubmit"] = (e) => {
     e.preventDefault();

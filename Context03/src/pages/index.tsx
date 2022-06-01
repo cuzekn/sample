@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
-import { useContext } from "react";
-import { TodosContext, TodosDispatchContext } from "src/state/todo";
+import { useTodos, useTodosDispatch } from "src/state/todo";
 
 const Home: NextPage = () => {
-  const todos = useContext(TodosContext);
-  const { toggleIsDone } = useContext(TodosDispatchContext);
+  const todos = useTodos();
+  const { toggleIsDone } = useTodosDispatch();
 
   return (
     <div>
